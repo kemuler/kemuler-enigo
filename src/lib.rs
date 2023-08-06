@@ -40,7 +40,7 @@ impl Enigo {
     }
 }
 
-pub trait EnigoButtonLikeExt {
+pub trait EnigoButtonLikeExt: Sized {
     kemuler::button_like_impl_body! {}
 }
 
