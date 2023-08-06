@@ -1,4 +1,4 @@
-# kemuler4enigo
+# kemuler-enigo
 Simulate input using [`enigo`](1) with [`kemuler`](2) framework
 
 See [`enigo`'s README](3) for installing any needed dependencies.
