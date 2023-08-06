@@ -3,7 +3,7 @@
 use enigo::{KeyboardControllable, MouseControllable};
 use kemuler::{common_inputs, input_event::*, simulator::Simulate};
 
-pub use enigo;
+pub use enigo::{Key, MouseButton};
 
 /// Simulate input using `Enigo`.
 ///
@@ -39,6 +39,13 @@ impl Enigo {
         &mut self.0
     }
 }
+
+pub trait EnigoButtonLikeExt {
+    kemuler::button_like_impl_body! {}
+}
+
+impl EnigoButtonLikeExt for enigo::Key {}
+impl EnigoButtonLikeExt for enigo::MouseButton {}
 
 fn enigoify_common_mouse_button(button: common_inputs::MouseButton) -> enigo::MouseButton {
     match button {

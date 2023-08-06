@@ -1,5 +1,5 @@
 use kemuler::prelude::*;
-use kemuler4enigo::Enigo;
+use kemuler_enigo::Enigo;
 use std::io::stdin;
 
 fn prompt<T>(message: &str) -> T
