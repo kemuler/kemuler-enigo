@@ -1,6 +1,6 @@
+use kemuler::prelude::*;
+use kemuler4enigo::Enigo;
 use std::{io::stdin, time::Instant};
-
-use kemuler::{prelude::*, simulators::enigo::Enigo};
 
 fn prompt<T>(message: &str) -> T
 where
