@@ -1,7 +1,7 @@
 //! Simulate input using [`enigo`](https://github.com/enigo-rs/enigo).
 
-use crate::{common_inputs, input_event::*, simulator::Simulate};
 use enigo::{KeyboardControllable, MouseControllable};
+use kemuler::{common_inputs, input_event::*, simulator::Simulate};
 
 pub use enigo;
 
@@ -45,6 +45,7 @@ fn enigoify_common_mouse_button(button: common_inputs::MouseButton) -> enigo::Mo
         common_inputs::MouseButton::Left => enigo::MouseButton::Left,
         common_inputs::MouseButton::Middle => enigo::MouseButton::Middle,
         common_inputs::MouseButton::Right => enigo::MouseButton::Right,
+        _ => todo!(),
     }
 }
 
@@ -80,6 +81,7 @@ fn enigoify_common_key(key: common_inputs::Key) -> enigo::Key {
         common_inputs::Key::DownArrow => enigo::Key::DownArrow,
         common_inputs::Key::LeftArrow => enigo::Key::LeftArrow,
         common_inputs::Key::RightArrow => enigo::Key::RightArrow,
+        _ => todo!(),
     }
 }
 
