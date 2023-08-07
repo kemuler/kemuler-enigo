@@ -33,6 +33,9 @@ fn main() {
     let mut enigo = Enigo::new();
 
     loop {
-        button.click().sleep_ms(interval).run_with(&mut enigo);
+        button
+            .click()
+            .sleep_for_millis(interval)
+            .run_with(&mut enigo);
     }
 }
