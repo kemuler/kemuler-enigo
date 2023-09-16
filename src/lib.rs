@@ -41,7 +41,65 @@ impl Enigo {
 }
 
 pub trait EnigoButtonLikeExt: Sized {
-    kemuler::button_like_impl_body! {}
+    /// Set this button state
+    /// This is a convenience shorthand for
+    /// ```
+    /// # use kemuler::input_event::*;
+    /// # let this = 0i32;
+    /// # let to = 0i32;
+    /// SetTo { input: this, to: to }
+    /// # ;
+    /// ```
+    fn set_to(self, to: bool) -> kemuler::input_event::SetTo<Self, bool> {
+        kemuler::input_event::SetTo::new(self, to)
+    }
+
+    /// Press the button.
+    /// This is a convenience shorthand for
+    /// ```
+    /// # use kemuler::input_event::*;
+    /// # let this = 0i32;
+    /// SetTo { input: this, to: true }
+    /// # ;
+    /// ```
+    fn down(self) -> kemuler::input_event::SetTo<Self, bool> {
+        self.set_to(true)
+    }
+
+    /// Release the key
+    /// This is a convenience shorthand for
+    /// ```
+    /// # use kemuler::input_event::*;
+    /// # let this = 0i32;
+    /// SetTo { input: this, to: false }
+    /// # ;
+    /// ```
+    fn up(self) -> kemuler::input_event::SetTo<Self, bool> {
+        self.set_to(false)
+    }
+
+    /// Press and release the button consecutively.
+    /// This is a convenience shorthand for
+    /// ```
+    /// # use kemuler::{prelude::*, input_event::*, combinator::*};
+    /// # let this = 0i32;
+    /// SimTuple((
+    ///     SetTo { input: this, to: true },
+    ///     SetTo { input: this, to: false }
+    /// ))
+    /// # ;
+    /// ```
+    fn click(
+        self,
+    ) -> kemuler::combinator::SimTuple<(
+        kemuler::input_event::SetTo<Self, bool>,
+        kemuler::input_event::SetTo<Self, bool>,
+    )>
+    where
+        Self: Clone,
+    {
+        kemuler::combinator::SimTuple((self.clone().down(), self.up()))
+    }
 }
 
 impl EnigoButtonLikeExt for enigo::Key {}
